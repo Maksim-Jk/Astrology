@@ -1,0 +1,27 @@
+.header {
+  margin: 20px auto;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .header ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .header ul li {
+    width: 48%;
+  }
+  .header ul li a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .header ul li {
+    width: 100%;
+  }
+}
+
+.active a {
+  background-color: hsl(var(--accent));
+}

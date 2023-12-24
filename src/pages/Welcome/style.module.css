@@ -1,0 +1,25 @@
+.main {
+  background-image: url("@/assets/main-background.jpg");
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: clamp(14px, 8vw, 58px);
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 16px;
+  margin-bottom: 62px;
+}

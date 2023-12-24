@@ -1,0 +1,13 @@
+.createHoroscope {
+  text-align: left;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.button {
+  margin-top: 20px;
+}
