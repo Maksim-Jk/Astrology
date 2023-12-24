@@ -8,6 +8,12 @@
   flex-grow: 1;
 }
 
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 20px;
+  }
+}
+
 .main {
   width: 100%;
   flex: 1;
