@@ -1,4 +1,11 @@
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
@@ -16,22 +23,31 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { TypographyH1 } from "@/components/ui/Typography/TypographyH1";
 
 const formSchema = z.object({
-  horoscopeType: z.enum(["zodiac"]),
-  zodiacSign: z.enum([
-    "aries",
-    "taurus",
-    "gemini",
-    "cancer",
-    "leo",
-    "virgo",
-    "libra",
-    "scorpio",
-    "sagittarius",
-    "capricorn",
-    "aquarius",
-    "pisces",
-  ]),
-  gender: z.enum(["male", "female", "other"]),
+  horoscopeType: z.enum(["zodiac", "love", "life"], {
+    errorMap: () => ({ message: "Выберите тип гороскопа" }),
+  }),
+  zodiacSign: z.enum(
+    [
+      "aries",
+      "taurus",
+      "gemini",
+      "cancer",
+      "leo",
+      "virgo",
+      "libra",
+      "scorpio",
+      "sagittarius",
+      "capricorn",
+      "aquarius",
+      "pisces",
+    ],
+    {
+      errorMap: () => ({ message: "Выберите знак зодиака" }),
+    }
+  ),
+  gender: z.enum(["male", "female", "other"], {
+    errorMap: () => ({ message: "Выберите пол" }),
+  }),
 });
 
 export const CreateHoroscope = () => {
@@ -39,8 +55,6 @@ export const CreateHoroscope = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       horoscopeType: "zodiac",
-      zodiacSign: "aries",
-      gender: "male",
     },
   });
 
@@ -48,7 +62,7 @@ export const CreateHoroscope = () => {
 
   return (
     <div className={style.createHoroscope}>
-      <TypographyH1>Create Horoscope</TypographyH1>
+      <TypographyH1>Сгенерировать гороскоп</TypographyH1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className={style.form}>
           <FormField
@@ -56,17 +70,18 @@ export const CreateHoroscope = () => {
             name="horoscopeType"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Horoscope Type Selection</FormLabel>
-                <FormControl>
-                  <Select {...field}>
+                <FormLabel>Тип гороскопа</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a horoscope type" />
+                      <SelectValue placeholder="Выберите тип гороскопа" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="zodiac">zodiac</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="zodiac">Зодиакальный</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -75,28 +90,29 @@ export const CreateHoroscope = () => {
             name="zodiacSign"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Zodiac Sign Selection</FormLabel>
-                <FormControl>
-                  <Select {...field}>
+                <FormLabel>Ваш знак зодиака</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a zodiac sign" />
+                      <SelectValue placeholder="Выберите знак зодиака" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="aries">aries</SelectItem>
-                      <SelectItem value="taurus">taurus</SelectItem>
-                      <SelectItem value="gemini">gemini</SelectItem>
-                      <SelectItem value="cancer">cancer</SelectItem>
-                      <SelectItem value="leo">leo</SelectItem>
-                      <SelectItem value="virgo">virgo</SelectItem>
-                      <SelectItem value="libra">libra</SelectItem>
-                      <SelectItem value="scorpio">scorpio</SelectItem>
-                      <SelectItem value="sagittarius">sagittarius</SelectItem>
-                      <SelectItem value="capricorn">capricorn</SelectItem>
-                      <SelectItem value="aquarius">aquarius</SelectItem>
-                      <SelectItem value="pisces">pisces</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="aries">Овен</SelectItem>
+                    <SelectItem value="taurus">Телец</SelectItem>
+                    <SelectItem value="gemini">Близнецы</SelectItem>
+                    <SelectItem value="cancer">Рак</SelectItem>
+                    <SelectItem value="leo">Лев</SelectItem>
+                    <SelectItem value="virgo">Дева</SelectItem>
+                    <SelectItem value="libra">Весы</SelectItem>
+                    <SelectItem value="scorpio">Скорпион</SelectItem>
+                    <SelectItem value="sagittarius">Стрелец</SelectItem>
+                    <SelectItem value="capricorn">Козерог</SelectItem>
+                    <SelectItem value="aquarius">Водолей</SelectItem>
+                    <SelectItem value="pisces">Рыбы</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -105,24 +121,25 @@ export const CreateHoroscope = () => {
             name="gender"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Gender Selection</FormLabel>
-                <FormControl>
-                  <Select {...field}>
+                <FormLabel>Ваш пол</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a gender" />
+                      <SelectValue placeholder="Выберите пол" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="female">female</SelectItem>
-                      <SelectItem value="male">male</SelectItem>
-                      <SelectItem value="other">other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="male">Мужской</SelectItem>
+                    <SelectItem value="female">Женский</SelectItem>
+                    <SelectItem value="other">Другое</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
           <Button type="submit" className={style.button}>
-            Submit
+            Создать гороскоп
           </Button>
         </form>
       </Form>
