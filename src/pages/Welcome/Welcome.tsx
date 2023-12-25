@@ -9,7 +9,6 @@ export const Welcome = () => {
       <div className={style.container}>
         <h1 className={style.title}>Astrology</h1>
         <Button
-          className={style.button}
           onClick={() => {
             navigate("/horoscope/create");
           }}
