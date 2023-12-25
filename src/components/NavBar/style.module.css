@@ -1,0 +1,26 @@
+.active a {
+  background-color: hsl(var(--accent));
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .navbar ul li {
+    width: 48%;
+  }
+  .navbar ul li a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .navbar ul li {
+    width: 100%;
+  }
+}
+
+.navbarOpen {
+  background-color: red;
+}
