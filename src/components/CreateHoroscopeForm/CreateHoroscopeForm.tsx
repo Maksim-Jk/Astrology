@@ -98,7 +98,7 @@ export const CreateHoroscopeForm: React.FC<ICreateHoroscopeFormProps> = ({ setHo
           name="zodiacSign"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Ваш знак зодиака</FormLabel>
+              <FormLabel>Знак зодиака</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -129,7 +129,7 @@ export const CreateHoroscopeForm: React.FC<ICreateHoroscopeFormProps> = ({ setHo
           name="gender"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Ваш пол</FormLabel>
+              <FormLabel>Пол</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
