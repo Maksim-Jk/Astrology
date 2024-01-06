@@ -9,3 +9,13 @@
 .horoscopeText {
   margin-bottom: 20px;
 }
+
+.button {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .button {
+    margin-top: auto !important;
+  }
+}

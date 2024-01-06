@@ -20,7 +20,9 @@ export const CreateHoroscope = () => {
           <TypographyH1>Ваш гороскоп:</TypographyH1>
           <TypographyP>Данные для отправки на сервер:</TypographyP>
           <TypographyP className={style.horoscopeText}>{horoscope}</TypographyP>
-          <Button onClick={() => setHoroscope("")}>Сгенерировать новый гороскоп</Button>
+          <Button className={style.button} onClick={() => setHoroscope("")}>
+            Сгенерировать новый гороскоп
+          </Button>
         </>
       )}
     </div>
